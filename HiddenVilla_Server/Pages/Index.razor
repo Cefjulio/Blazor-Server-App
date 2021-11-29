@@ -20,7 +20,21 @@ Price: @Room.Price
 <br />
 <!-- 3 - Code to create HTML and use the object created below  -->
 
+<!-- 4 - Add an input to see one way bidding  -->
+<!-- 6 - Commenting this to recreate it with the correct 2 way biding  -->
+<!-- <input type="number" value="@Room.Price"> -->
+<!-- 4 - Add an input to see one way bidding  -->
+<!-- 5 - If we ran the app right now, we would see the price in the input box, but if we 
+change it in the input box, it does not change in the object yet-->
 
+<!-- 7 - To make it two way binding we use "@bind-value"  -->
+<!-- 9 - To make it change right away, we add @bind-value:event="oninput"  -->
+<input type="number" @bind-value="@Room.Price" @bind-value:event="oninput" >
+<!-- 7 - To make it two way binding we use "@bind-value"  -->
+<!-- 8 - If we run the App now, we see that the price value changes when we click
+outside the input box (this is the behavior by default)
+-->
+<!-- 10 - Now we will see the new value in the input affect the objec right away  -->
 
 <!-- 1 - Adding curly braces to add code  -->
 @code{
