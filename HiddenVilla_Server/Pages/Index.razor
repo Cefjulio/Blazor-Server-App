@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using Model
 
 @*<PageTitle>Index</PageTitle>
 
@@ -56,16 +57,16 @@ outside the input box (this is the behavior by default)
 
 @code{
     string SelectedRoomProp = "";
-
+    List<BlazorRoom> RoomsList = new List<BlazorRoom>();
     //2 - Creating a Room object from the Models -> BlazorRoom.cs 
-    Model.BlazorRoom Room = new Model.BlazorRoom()
+    BlazorRoom Room = new Model.BlazorRoom()
         {
 
             Id = 1,
             RoomName= "Villa Suite",
             IsActive = true,
             Price = 499,
-            RoomProps = new List<Model.BlazorRoomProp>
+            RoomProps = new List<BlazorRoomProp>
             {
                 new Model.BlazorRoomProp{Id=1,Name="Sq Ft", Value="100"},
                 new Model.BlazorRoomProp{Id=2,Name="Occupancy", Value="3"},
@@ -74,6 +75,50 @@ outside the input box (this is the behavior by default)
 
 
         };//2 - Creating a Room object from the Models -> BlazorRoom.cs 
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        RoomsList.Add(new BlazorRoom()
+            {
+                Id = 201,
+                RoomName = "Villa Suite One Bed Room",
+                IsActive = true,
+                Price = 399,
+                RoomProps = new List<BlazorRoomProp>
+                {
+                new Model.BlazorRoomProp{Id=1,Name="Sq Ft", Value="330"},
+                new Model.BlazorRoomProp { Id = 2, Name = "Occupancy", Value = "4" }
+
+                }
+
+            });
+
+             RoomsList.Add(new BlazorRoom()
+            {
+                Id = 30s1,
+                RoomName = "Villa Suite Twp Bed Room",
+                IsActive = true,
+                Price = 699,
+                RoomProps = new List<BlazorRoomProp>
+                {
+                new Model.BlazorRoomProp{Id=1,Name="Sq Ft", Value="150"},
+                new Model.BlazorRoomProp { Id = 2, Name = "Occupancy", Value = "6" }
+
+                }
+
+            });
+
+
+
+     }
+
+
+
+
+
+
+
 
 
 }<!-- 1 - Adding curly braces to add code  -->
