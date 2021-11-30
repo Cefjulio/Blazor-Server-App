@@ -31,7 +31,7 @@ change it in the input box, it does not change in the object yet-->
 <!-- 9 - To make it change right away, we add @bind-value:event="oninput"  -->
 <input type="number" @bind-value="@Room.Price" @bind-value:event="oninput" ><br />
 <input type="checkbox" @bind-value="Room.IsActive" checked="@(Room.IsActive?"checked":null)"    /> &nbsp; Is Active <br />
-<span>This room is @(Room.IsActive?"Active":"Inactive")</span>
+<span>This room is @(Room.IsActive?"Active":"Inactive")</span><br />
 
 
 <!-- 7 - To make it two way binding we use "@bind-value"  -->
@@ -41,16 +41,36 @@ outside the input box (this is the behavior by default)
 <!-- 10 - Now we will see the new value in the input affect the objec right away  -->
 
 <!-- 1 - Adding curly braces to add code  -->
+
+<select @bind="SelectedRoomProp">
+    @foreach (var prop in Room.RoomProps)
+    {
+        <option value="@prop.Name">@prop.Name</option>
+    }
+
+
+</select>
+<span>The Room Prop selected is: @SelectedRoomProp</span>
+
+
+
 @code{
+    string SelectedRoomProp = "";
 
     //2 - Creating a Room object from the Models -> BlazorRoom.cs 
     Model.BlazorRoom Room = new Model.BlazorRoom()
         {
-            
+
             Id = 1,
             RoomName= "Villa Suite",
             IsActive = true,
-            Price = 499
+            Price = 499,
+            RoomProps = new List<Model.BlazorRoomProp>
+            {
+                new Model.BlazorRoomProp{Id=1,Name="Sq Ft", Value="100"},
+                new Model.BlazorRoomProp{Id=2,Name="Occupancy", Value="3"},
+
+            }
 
 
         };//2 - Creating a Room object from the Models -> BlazorRoom.cs 
