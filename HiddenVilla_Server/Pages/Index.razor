@@ -29,7 +29,11 @@ change it in the input box, it does not change in the object yet-->
 
 <!-- 7 - To make it two way binding we use "@bind-value"  -->
 <!-- 9 - To make it change right away, we add @bind-value:event="oninput"  -->
-<input type="number" @bind-value="@Room.Price" @bind-value:event="oninput" >
+<input type="number" @bind-value="@Room.Price" @bind-value:event="oninput" ><br />
+<input type="checkbox" @bind-value="Room.IsActive" checked="@(Room.IsActive?"checked":null)"    /> &nbsp; Is Active <br />
+<span>This room is @(Room.IsActive?"Active":"Inactive")</span>
+
+
 <!-- 7 - To make it two way binding we use "@bind-value"  -->
 <!-- 8 - If we run the App now, we see that the price value changes when we click
 outside the input box (this is the behavior by default)
